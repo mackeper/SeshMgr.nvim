@@ -1,17 +1,15 @@
+local util = require("session-plugin.util")
+
 local actions = {}
 
-local function Get_encoded_cwd(delimiter)
-    return vim.fn.substitute(vim.fn.getcwd(), "/", delimiter, "g")
-end
-
-local function Get_decoded_session_file_path(encoded_cwd, delimiter)
-    return vim.fn.substitute(encoded_cwd, delimiter, "/", "g")
-end
-
+-- Load a session
+-- @param session_file_path string: The path to the session file
 actions.load = function(session_file_path)
     vim.cmd("source " .. session_file_path)
 end
 
+-- Load the last session
+-- @param session_dir string: The directory where the session file will be saved
 actions.load_last = function(session_dir)
     local sessions = actions.get_sessions(session_dir)
 
@@ -29,6 +27,9 @@ actions.load_last = function(session_dir)
     end
 end
 
+-- Save the current session
+-- @param session_dir string: The directory where the session file will be saved
+-- @param session_file_name string: The name of the session file
 actions.save = function(session_dir, session_file_name)
     if vim.fn.isdirectory(session_dir) == 0 then
         vim.fn.mkdir(session_dir, "p")
@@ -37,14 +38,22 @@ actions.save = function(session_dir, session_file_name)
     vim.cmd("mksession! " .. session_file_name)
 end
 
+-- Delete a session
+-- @param session_file_path string: The path to the session file
 actions.delete = function(session_file_path)
     vim.fn.delete(session_file_path)
 end
 
+-- Check if a session file exists
+-- @param session_file_path string: The path to the session file
+-- @return boolean: Whether the session file exists
 actions.exists = function(session_file_path)
     return vim.fn.filereadable(session_file_path) == 1
 end
 
+-- Get all the sessions
+-- @param session_dir string: The directory where the session files are saved
+-- @return table: A list of sessions
 actions.get_sessions = function(session_dir)
     local session_files = vim.fn.readdir(session_dir)
     local sessions = {}
@@ -60,8 +69,12 @@ actions.get_sessions = function(session_dir)
     return sessions
 end
 
-actions.get_session_file = function(session_dir)
-    return session_dir .. "/" .. Get_encoded_cwd() .. ".vim"
+-- Get the session file path
+-- @param session_dir string: The directory where the session file will be saved
+-- @param delimiter string: The delimiter to use in the session file name
+-- @return string: The path to the session file
+actions.get_session_file_path = function(session_dir, delimiter)
+    return session_dir .. "/" .. util.get_encoded_cwd(delimiter) .. ".vim"
 end
 
 return actions

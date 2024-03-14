@@ -1,0 +1,100 @@
+==============================================================================
+
+session-plugin                                                 *session-plugin*
+
+The plugin provides tools to easier manage sessions.
+
+==============================================================================
+
+1. Introduction                                                 *session-intro*
+2. Options                                                    *session-options*
+3. Commands                                                  *session-commands*
+4. Auto commands                                        *session-auto-commands*
+5. Telescope integration                        *session-telescope-integration*
+
+==============================================================================
+
+1. Introduction                                                 *session-intro*
+
+The plugin provides tools to easier manage sessions.
+
+==============================================================================
+
+2. Options                                                    *session-options*
+
+The plugin provides the following default options:
+{
+    session_dir = vim.fn.stdpath("data") .. "/sessions",
+    session_name_delimiter = "_-_",
+
+    autosave_events = { "ExitPre" },
+    autosave = true,
+
+    telescope = {
+        enabled = true,
+        keymap = "<leader>js",
+    },
+}
+
+==============================================================================
+
+3. Commands                                                  *session-commands*
+
+The plugin provides the following commands:
+    - SessionSave
+    - SessionLoad {name}
+    - SessionLoadLast
+    - SessionDelete {name}
+    - SessionDeleteCurrent
+    - SessionList
+
+                                                  *session-commands:SessionSave*
+:SessionSave
+
+   Save the current session.
+
+                                                  *session-commands:SessionLoad*
+:SessionLoad {name}
+
+    Load the session with the given name.
+
+                                              *session-commands:SessionLoadLast*
+:SessionLoadLast
+
+    Load the last saved session.
+
+                                                *session-commands:SessionDelete*
+:SessionDelete {name}
+
+    Delete the session with the given name.
+
+                                         *session-commands:SessionDeleteCurrent*
+:SessionDeleteCurrent
+
+        Delete the current session.
+
+                                                  *session-commands:SessionList*
+:SessionList
+
+        List all the saved sessions.
+
+==============================================================================
+
+4. Auto commands                                        *session-auto-commands*
+
+The plugin provides the following auto commands:
+    - SessionAutoSave - configured to save the session on the events
+      specified in the `autosave_events` option.
+
+==============================================================================
+
+5. Telescope integration                        *session-telescope-integration*
+
+The plugin provides integration with the telescope plugin. The integration
+provides the following commands:
+    - Search sessions - configured to search for sessions in the `session_dir`
+      directory.
+
+==============================================================================
+
+vim:tw=78:ts=8:ft=help:norl:

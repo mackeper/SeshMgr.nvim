@@ -1,31 +1,36 @@
-local actions = require("session-plugin.actions")
-
 describe("actions", function()
     it("should return a table", function()
-        require("session-plugin.actions")
+        local actions = require("session-plugin.actions")
+        assert(actions ~= nil)
     end)
 
     it("should have a load function", function()
+        local actions = require("session-plugin.actions")
         assert.is_function(actions.load)
     end)
 
     it("should have a save function", function()
+        local actions = require("session-plugin.actions")
         assert.is_function(actions.save)
     end)
 
     it("should have a delete function", function()
+        local actions = require("session-plugin.actions")
         assert.is_function(actions.delete)
     end)
 
     it("should have an exists function", function()
+        local actions = require("session-plugin.actions")
         assert.is_function(actions.exists)
     end)
 
     it("should have a get_sessions function", function()
+        local actions = require("session-plugin.actions")
         assert.is_function(actions.get_sessions)
     end)
 
     it("should have a get_session_file function", function()
-        assert.is_function(actions.get_session_file)
+        local actions = require("session-plugin.actions")
+        assert.is_function(actions.get_session_file_path)
     end)
 end)

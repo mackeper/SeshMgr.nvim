@@ -1,0 +1,13 @@
+describe("init", function()
+    it("should return a table", function()
+        local init = require("session-plugin")
+        assert(init ~= nil)
+    end)
+
+    it("should use opts over default config", function()
+        local init = require("session-plugin")
+        assert(init.config.session_dir ~= "test", init.config.session_dir)
+        init.setup({ session_dir = "test" })
+        assert(init.config.session_dir == "test", "session_dir")
+    end)
+end)

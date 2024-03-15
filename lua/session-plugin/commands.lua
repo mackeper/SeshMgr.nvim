@@ -15,8 +15,6 @@ end
 -- The command will take a single argument, the name of the session file to load
 commands.setup_load = function()
     vim.api.nvim_create_user_command("SessionLoad", function(args)
-        print(vim.inspect(args))
-        print(vim.inspect(args.args))
         actions.load(args.args)
     end, { nargs = 1 })
 end

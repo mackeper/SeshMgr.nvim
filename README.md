@@ -20,12 +20,17 @@ Session plugin for neovim
 
 ```lua
 :SessionSave
-:SessionLoad
+:SessionLoad {session_name}
 :SessionLoadLast
-:SessionDelete
+:SessionDelete {session_name}
+:SessionDeleteCurrent
+:SessionList
 ```
 
 ## Telescope
+
+> [!WARNING]
+> Not implemented yet, enable telescope in the configuration.
 
 ```lua
 require('telescope').load_extension('session-plugin')
@@ -33,7 +38,7 @@ require('telescope').load_extension('session-plugin')
 
 # Installation :inbox_tray:
 
-With lazy:
+With [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
 {
@@ -46,12 +51,24 @@ With lazy:
 
 ```lua
 {
+    session_dir = vim.fn.stdpath("data") .. "/sessions",
+    session_name_delimiter = "_-_",
+
+    autosave_events = { "ExitPre" },
     autosave = true,
-},
+
+    telescope = {
+        enabled = true,
+        keymap = "<leader>js",
+    },
+}
 ```
 
 # Contributing :tada:
 
+TODO
+
 # Related Projects :link:
 
 - [auto-session](https://github.com/rmagatti/auto-session)
+- ...

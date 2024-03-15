@@ -2,6 +2,8 @@ local M = {}
 
 -- Default configuration
 M.config = {
+    sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
+
     session_dir = vim.fn.stdpath("data") .. "/sessions",
     session_name_delimiter = "_-_",
 
@@ -33,6 +35,8 @@ M._setup_autocmds = function()
     if M.config.autosave then
         autocmds.start_autosave(M.config.session_dir, M.config.session_name_delimiter, M.config.autosave_events)
     end
+
+    -- autocmds.setup_nvimtree_fix()
 end
 
 -- Setup the keymaps
@@ -47,10 +51,11 @@ end
 -- @param opts table: Options to override the default configuration
 M.setup = function(opts)
     opts = opts or {}
-    print("session-plugin setup")
 
     -- Merging the user's configuration with the default configuration
     M.config = vim.tbl_deep_extend("force", {}, M.config, opts)
+
+    vim.o.sessionoptions = M.config.sessionoptions
 
     M._setup_commands()
     M._setup_autocmds()

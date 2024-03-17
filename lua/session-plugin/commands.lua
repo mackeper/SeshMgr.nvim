@@ -50,7 +50,7 @@ commands.setup_list = function(session_dir)
     vim.api.nvim_create_user_command("SessionList", function()
         local sessions = actions.get_sessions(session_dir)
         for _, session in ipairs(sessions) do
-            print(session.name .. " - " .. session.readable_time)
+            print(session.name .. "   " .. session.readable_time)
         end
     end, { nargs = 0 })
 end

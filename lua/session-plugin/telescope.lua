@@ -50,10 +50,19 @@ telescope.search_session = function(session_dir, delimiter)
         return displayer({ { util.get_decoded_session_file_path(entry.name, delimiter) }, { entry.readable_time } })
     end
 
+    -- Sort the sessions by most recent
+    local get_sessions = function()
+        local sessions = actions.get_sessions(session_dir)
+        table.sort(sessions, function(a, b)
+            return a.time > b.time
+        end)
+        return sessions
+    end
+
     require("telescope.pickers")
         .new(opts, {
             finder = finders.new_table({
-                results = actions.get_sessions(session_dir),
+                results = get_sessions(),
                 entry_maker = function(entry)
                     entry.value = entry
                     entry.display = make_display

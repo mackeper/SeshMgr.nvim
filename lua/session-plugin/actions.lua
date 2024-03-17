@@ -35,9 +35,6 @@ actions.save = function(session_dir, session_file_name)
         vim.fn.mkdir(session_dir, "p")
     end
 
-    -- TODO: pre-save hook
-    -- local ok, _ = pcall(require("nvim-tree.api").tree.close)
-
     vim.cmd("mksession! " .. session_file_name)
 end
 

@@ -36,6 +36,11 @@ Session plugin for neovim
 require('telescope').load_extension('session-plugin')
 ```
 
+You can delete and load sessions using telescope.
+
+- `<CR>` to load session.
+- `<C-d>` to delete session.
+
 # Installation :inbox_tray:
 
 With [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
@@ -70,5 +75,12 @@ TODO
 
 # Related Projects :link:
 
-- [auto-session](https://github.com/rmagatti/auto-session)
-- ...
+- [rmagatti/auto-session](https://github.com/rmagatti/auto-session)
+- [echasnovski/mini.nvim#mini.sessions](https://github.com/echasnovski/mini.nvim#mini.sessions)
+- [gennaro-tedesco/nvim-possession](https://github.com/gennaro-tedesco/nvim-possession)
+- [olimorris/persisted.nvim](https://github.com/olimorris/persisted.nvim)
+- [Shatur/neovim-session-manager](https://github.com/Shatur/neovim-session-manager)
+- [jedrzejboczar/possession.nvim](https://github.com/jedrzejboczar/possession.nvim)
+- [niuiic/multiple-session.nvim](https://github.com/niuiic/multiple-session.nvim)
+- [RutaTang/spectacle.nvim](https://github.com/RutaTang/spectacle.nvim)
+- [coffebar/neovim-project](https://github.com/coffebar/neovim-project)

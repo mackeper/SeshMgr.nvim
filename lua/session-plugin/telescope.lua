@@ -2,7 +2,25 @@ local actions = require("session-plugin.actions")
 local util = require("session-plugin.util")
 
 -- TODO: Make this an extension?
+-- TODO: The "telescope" namespace is already used by the telescope plugin
+-- which makes it confusing to use the same name here
 local telescope = {}
+
+telescope.actions = {}
+
+telescope.actions.load_session = function(prompt_bufnr)
+    local selection = require("telescope.actions.state").get_selected_entry()
+    require("telescope.actions").close(prompt_bufnr)
+    actions.load(selection.value.path)
+end
+
+telescope.actions.delete_session = function(prompt_bufnr)
+    local selection = require("telescope.actions.state").get_selected_entry()
+    local current_picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+    current_picker:delete_selection(function()
+        actions.delete(selection.value.path)
+    end)
+end
 
 -- Search for sessions
 -- @param session_dir string: The directory where the session files are saved
@@ -45,13 +63,9 @@ telescope.search_session = function(session_dir, delimiter)
             }),
             previewer = telescope_config.grep_previewer(opts),
             sorter = telescope_config.file_sorter(opts),
-            attach_mappings = function(prompt_bufnr, map)
-                local load_session = function()
-                    local selection = require("telescope.actions.state").get_selected_entry()
-                    require("telescope.actions").close(prompt_bufnr)
-                    vim.cmd("source " .. selection.value.path)
-                end
-                telescope_actions.select_default:replace(load_session)
+            attach_mappings = function(_, map)
+                telescope_actions.select_default:replace(telescope.actions.load_session)
+                map("i", "<C-d>", telescope.actions.delete_session)
                 return true
             end,
         })

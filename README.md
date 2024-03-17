@@ -1,4 +1,4 @@
-# Session plugin
+# SeshMgr.nvim
 
 <div align="center">
 
@@ -39,7 +39,7 @@ By default, autosave is enabled to save the session when exiting neovim. This ca
 > Not implemented yet, enable telescope in the configuration.
 
 ```lua
-require('telescope').load_extension('session-plugin')
+require('telescope').load_extension('seshmgr')
 ```
 
 You can delete and load sessions using telescope.
@@ -53,12 +53,14 @@ With [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
 {
-   "mackeper/session-plugin",
+   "mackeper/seshmgr.nvim",
    opts = {},
 }
 ```
 
 # Configuration :wrench:
+
+Default configuration:
 
 ```lua
 {
@@ -90,3 +92,4 @@ TODO
 - [niuiic/multiple-session.nvim](https://github.com/niuiic/multiple-session.nvim)
 - [RutaTang/spectacle.nvim](https://github.com/RutaTang/spectacle.nvim)
 - [coffebar/neovim-project](https://github.com/coffebar/neovim-project)
+- [natecraddock/sessions.nvim](https://github.com/natecraddock/sessions.nvim)

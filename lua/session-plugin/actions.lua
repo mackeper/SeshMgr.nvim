@@ -31,6 +31,10 @@ end
 -- @param session_dir string: The directory where the session file will be saved
 -- @param session_file_name string: The name of the session file
 actions.save_session = function(session_dir, session_file_name)
+    if vim.bo.filetype == "gitcommit" then
+        return
+    end
+
     if vim.fn.isdirectory(session_dir) == 0 then
         vim.fn.mkdir(session_dir, "p")
     end

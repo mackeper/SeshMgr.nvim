@@ -1,0 +1,11 @@
+name: ❓ Question/Help
+description: Ask a question or request assistance
+title: "[QUESTION] <title>"
+labels: ["question"]
+body:
+  - type: textarea
+    attributes:
+      label: Question or Issue
+      description: Clearly state your question or the issue you're facing.
+    validations:
+      required: true

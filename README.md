@@ -1,11 +1,11 @@
-# Session plugin
+# SeshMgr.nvim
 
 <div align="center">
 
-Session plugin for neovim to save and load sessions.
+SeshMgr.nvim is a session management plugin for Neovim to save and load sessions.
 
 I made this plugin for myself, there are many other plugins that do the same thing, see [related projects](#related-projects-link).
-The main difference is that this plugin is that the telescope integration lists session with timestaps and in order of last used.
+The main difference is that this plugin is that the telescope integration lists session with timestamps and in order of last used.
 
 ![Logo](./.github/images/image.png)
 
@@ -20,7 +20,7 @@ The main difference is that this plugin is that the telescope integration lists 
 # Usage :computer:
 
 Manually save and load sessions using [commands](#commands-keyboard) or use [telescope](#telescope-telescope) to manage sessions.
-By default, autosave is enabled to save the session when exiting neovim. This can be disabled in the [configuration](#configuration-wrench).
+By default, autosave is enabled to save the session when exiting Neovim. This can be disabled in the [configuration](#configuration-wrench).
 
 ## Commands :keyboard:
 
@@ -39,7 +39,7 @@ By default, autosave is enabled to save the session when exiting neovim. This ca
 > Not implemented yet, enable telescope in the configuration.
 
 ```lua
-require('telescope').load_extension('session-plugin')
+require('telescope').load_extension('seshmgr')
 ```
 
 You can delete and load sessions using telescope.
@@ -53,12 +53,14 @@ With [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
 {
-   "mackeper/session-plugin",
+   "mackeper/seshmgr.nvim",
    opts = {},
 }
 ```
 
 # Configuration :wrench:
+
+Default configuration:
 
 ```lua
 {
@@ -90,3 +92,4 @@ TODO
 - [niuiic/multiple-session.nvim](https://github.com/niuiic/multiple-session.nvim)
 - [RutaTang/spectacle.nvim](https://github.com/RutaTang/spectacle.nvim)
 - [coffebar/neovim-project](https://github.com/coffebar/neovim-project)
+- [natecraddock/sessions.nvim](https://github.com/natecraddock/sessions.nvim)

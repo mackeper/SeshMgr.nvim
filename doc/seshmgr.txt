@@ -1,26 +1,26 @@
 ==============================================================================
 
-session-plugin                                                 *session-plugin*
+SeshMgr                                                               *seshmgr*
 
 The plugin provides tools to easier manage sessions.
 
 ==============================================================================
 
-1. Introduction                                                 *session-intro*
-2. Options                                                    *session-options*
-3. Commands                                                  *session-commands*
-4. Auto commands                                        *session-auto-commands*
-5. Telescope integration                        *session-telescope-integration*
+1. Introduction                                                 *seshmgr-intro*
+2. Options                                                    *seshmgr-options*
+3. Commands                                                  *seshmgr-commands*
+4. Auto commands                                        *seshmgr-auto-commands*
+5. Telescope integration                        *seshmgr-telescope-integration*
 
 ==============================================================================
 
-1. Introduction                                                 *session-intro*
+1. Introduction                                                 *seshmgr-intro*
 
 The plugin provides tools to easier manage sessions.
 
 ==============================================================================
 
-2. Options                                                    *session-options*
+2. Options                                                    *seshmgr-options*
 
 The plugin provides the following default options:
 {
@@ -38,7 +38,7 @@ The plugin provides the following default options:
 
 ==============================================================================
 
-3. Commands                                                  *session-commands*
+3. Commands                                                  *seshmgr-commands*
 
 The plugin provides the following commands:
     - SessionSave
@@ -48,39 +48,39 @@ The plugin provides the following commands:
     - SessionDeleteCurrent
     - SessionList
 
-                                                  *session-commands:SessionSave*
+                                                  *seshmgr-commands:SessionSave*
 :SessionSave
 
    Save the current session.
 
-                                                  *session-commands:SessionLoad*
+                                                  *seshmgr-commands:SessionLoad*
 :SessionLoad {name}
 
     Load the session with the given name.
 
-                                              *session-commands:SessionLoadLast*
+                                              *seshmgr-commands:SessionLoadLast*
 :SessionLoadLast
 
     Load the last saved session.
 
-                                                *session-commands:SessionDelete*
+                                                *seshmgr-commands:SessionDelete*
 :SessionDelete {name}
 
     Delete the session with the given name.
 
-                                         *session-commands:SessionDeleteCurrent*
+                                         *seshmgr-commands:SessionDeleteCurrent*
 :SessionDeleteCurrent
 
         Delete the current session.
 
-                                                  *session-commands:SessionList*
+                                                  *seshmgr-commands:SessionList*
 :SessionList
 
         List all the saved sessions.
 
 ==============================================================================
 
-4. Auto commands                                        *session-auto-commands*
+4. Auto commands                                        *seshmgr-auto-commands*
 
 The plugin provides the following auto commands:
     - SessionAutoSave - configured to save the session on the events
@@ -88,7 +88,7 @@ The plugin provides the following auto commands:
 
 ==============================================================================
 
-5. Telescope integration                        *session-telescope-integration*
+5. Telescope integration                        *seshmgr-telescope-integration*
 
 The plugin provides integration with the telescope plugin. The integration
 provides the following commands:

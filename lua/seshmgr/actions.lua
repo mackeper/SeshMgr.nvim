@@ -1,4 +1,4 @@
-local util = require("session-plugin.util")
+local util = require("seshmgr.util")
 
 local actions = {}
 

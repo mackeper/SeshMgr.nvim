@@ -11,14 +11,14 @@ telescope.actions = {}
 telescope.actions.load_session = function(prompt_bufnr)
     local selection = require("telescope.actions.state").get_selected_entry()
     require("telescope.actions").close(prompt_bufnr)
-    actions.load(selection.value.path)
+    actions.load_session(selection.value.path)
 end
 
 telescope.actions.delete_session = function(prompt_bufnr)
     local selection = require("telescope.actions.state").get_selected_entry()
     local current_picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
     current_picker:delete_selection(function()
-        actions.delete(selection.value.path)
+        actions.delete_session(selection.value.path)
     end)
 end
 

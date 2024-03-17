@@ -4,7 +4,7 @@ local actions = {}
 
 -- Load a session
 -- @param session_file_path string: The path to the session file
-actions.load = function(session_file_path)
+actions.load_session = function(session_file_path)
     vim.cmd("source " .. session_file_path)
 end
 
@@ -23,14 +23,14 @@ actions.load_last = function(session_dir)
     end
 
     if last_session then
-        actions.load(last_session.path)
+        actions.load_session(last_session.path)
     end
 end
 
 -- Save the current session
 -- @param session_dir string: The directory where the session file will be saved
 -- @param session_file_name string: The name of the session file
-actions.save = function(session_dir, session_file_name)
+actions.save_session = function(session_dir, session_file_name)
     if vim.fn.isdirectory(session_dir) == 0 then
         vim.fn.mkdir(session_dir, "p")
     end
@@ -40,14 +40,14 @@ end
 
 -- Delete a session
 -- @param session_file_path string: The path to the session file
-actions.delete = function(session_file_path)
+actions.delete_session = function(session_file_path)
     vim.fn.delete(session_file_path)
 end
 
 -- Check if a session file exists
 -- @param session_file_path string: The path to the session file
 -- @return boolean: Whether the session file exists
-actions.exists = function(session_file_path)
+actions.session_exists = function(session_file_path)
     return vim.fn.filereadable(session_file_path) == 1
 end
 

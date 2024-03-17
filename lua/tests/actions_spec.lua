@@ -6,22 +6,22 @@ describe("actions", function()
 
     it("should have a load function", function()
         local actions = require("session-plugin.actions")
-        assert.is_function(actions.load)
+        assert.is_function(actions.load_session)
     end)
 
     it("should have a save function", function()
         local actions = require("session-plugin.actions")
-        assert.is_function(actions.save)
+        assert.is_function(actions.save_session)
     end)
 
     it("should have a delete function", function()
         local actions = require("session-plugin.actions")
-        assert.is_function(actions.delete)
+        assert.is_function(actions.delete_session)
     end)
 
     it("should have an exists function", function()
         local actions = require("session-plugin.actions")
-        assert.is_function(actions.exists)
+        assert.is_function(actions.session_exists)
     end)
 
     it("should have a get_sessions function", function()

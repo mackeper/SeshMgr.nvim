@@ -11,7 +11,7 @@ autocmds.start_autosave = function(session_dir, delimiter, events)
         desc = "Save session on exit",
         group = vim.api.nvim_create_augroup("session-plugin.autosave", { clear = true }),
         callback = function()
-            actions.save(session_dir, actions.get_session_file_path(session_dir, delimiter))
+            actions.save_session(session_dir, actions.get_session_file_path(session_dir, delimiter))
         end,
     })
 end

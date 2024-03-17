@@ -2,10 +2,10 @@
 
 <div align="center">
 
-Session plugin for neovim to save and load sessions.
+SeshMgr.nvim is a session management plugin for Neovim to save and load sessions.
 
 I made this plugin for myself, there are many other plugins that do the same thing, see [related projects](#related-projects-link).
-The main difference is that this plugin is that the telescope integration lists session with timestaps and in order of last used.
+The main difference is that this plugin is that the telescope integration lists session with timestamps and in order of last used.
 
 ![Logo](./.github/images/image.png)
 
@@ -20,7 +20,7 @@ The main difference is that this plugin is that the telescope integration lists 
 # Usage :computer:
 
 Manually save and load sessions using [commands](#commands-keyboard) or use [telescope](#telescope-telescope) to manage sessions.
-By default, autosave is enabled to save the session when exiting neovim. This can be disabled in the [configuration](#configuration-wrench).
+By default, autosave is enabled to save the session when exiting Neovim. This can be disabled in the [configuration](#configuration-wrench).
 
 ## Commands :keyboard:
 

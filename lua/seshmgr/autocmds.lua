@@ -1,4 +1,4 @@
-local actions = require("session-plugin.actions")
+local actions = require("seshmgr.actions")
 
 local autocmds = {}
 
@@ -9,7 +9,7 @@ local autocmds = {}
 autocmds.start_autosave = function(session_dir, delimiter, events)
     vim.api.nvim_create_autocmd(events, {
         desc = "Save session on exit",
-        group = vim.api.nvim_create_augroup("session-plugin.autosave", { clear = true }),
+        group = vim.api.nvim_create_augroup("seshmgr.autosave", { clear = true }),
         callback = function()
             actions.save_session(session_dir, actions.get_session_file_path(session_dir, delimiter))
         end,
@@ -18,7 +18,7 @@ end
 
 -- Stop autosaving the session
 autocmds.stop_autosave = function()
-    vim.api.nvim_clear_autocmds({ group = "session-plugin.autosave" })
+    vim.api.nvim_clear_autocmds({ group = "seshmgr.autosave" })
 end
 
 -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Recipes#workaround-when-using-rmagattiauto-session
@@ -26,7 +26,7 @@ end
 autocmds.setup_nvimtree_fix = function()
     vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd" }, {
         pattern = "*",
-        group = vim.api.nvim_create_augroup("session-plugin", { clear = true }),
+        group = vim.api.nvim_create_augroup("seshmgr", { clear = true }),
         callback = function(opts)
             if vim.bo[opts.buf].filetype == "NvimTree" then
                 local api = require("nvim-tree.api")

@@ -1,5 +1,5 @@
-local actions = require("session-plugin.actions")
-local util = require("session-plugin.util")
+local actions = require("seshmgr.actions")
+local util = require("seshmgr.util")
 
 -- TODO: Make this an extension?
 -- TODO: The "telescope" namespace is already used by the telescope plugin

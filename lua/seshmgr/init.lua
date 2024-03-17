@@ -18,7 +18,7 @@ M.config = {
 
 --- Setup the commands
 M._setup_commands = function()
-    local commands = require("session-plugin.commands")
+    local commands = require("seshmgr.commands")
 
     commands.setup_save(M.config.session_dir, M.config.session_name_delimiter)
     commands.setup_load()
@@ -30,7 +30,7 @@ end
 
 -- Setup the autocmds
 M._setup_autocmds = function()
-    local autocmds = require("session-plugin.autocmds")
+    local autocmds = require("seshmgr.autocmds")
 
     if M.config.autosave then
         autocmds.start_autosave(M.config.session_dir, M.config.session_name_delimiter, M.config.autosave_events)
@@ -42,7 +42,7 @@ end
 -- Setup the keymaps
 M._setup_keymaps = function()
     if M.config.telescope.enabled then
-        local telescope = require("session-plugin.telescope")
+        local telescope = require("seshmgr.telescope")
         telescope.setup_keymaps(M.config.telescope.keymap, M.config.session_dir, M.config.session_name_delimiter)
     end
 end

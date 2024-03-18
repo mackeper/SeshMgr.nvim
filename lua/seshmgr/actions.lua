@@ -10,6 +10,7 @@ end
 
 -- Load the last session
 -- @param session_dir string: The directory where the session file will be saved
+-- @return boolean: Whether the last session was loaded
 actions.load_last = function(session_dir)
     local sessions = actions.get_sessions(session_dir)
 
@@ -24,15 +25,18 @@ actions.load_last = function(session_dir)
 
     if last_session then
         actions.load_session(last_session.path)
+        return true
     end
+    return false
 end
 
 -- Save the current session
 -- @param session_dir string: The directory where the session file will be saved
 -- @param session_file_name string: The name of the session file
+-- @return boolean: Whether the session was saved
 actions.save_session = function(session_dir, session_file_name)
     if vim.bo.filetype == "gitcommit" then
-        return
+        return false
     end
 
     if vim.fn.isdirectory(session_dir) == 0 then
@@ -40,6 +44,7 @@ actions.save_session = function(session_dir, session_file_name)
     end
 
     vim.cmd("mksession! " .. session_file_name)
+    return true
 end
 
 -- Delete a session
@@ -57,7 +62,7 @@ end
 
 -- Get all the sessions
 -- @param session_dir string: The directory where the session files are saved
--- @return table: A list of sessions
+-- @return table: A list of sessions with name, path, time, and readable_time
 actions.get_sessions = function(session_dir)
     local session_files = vim.fn.readdir(session_dir)
     local sessions = {}

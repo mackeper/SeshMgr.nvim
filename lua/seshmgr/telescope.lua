@@ -8,13 +8,15 @@ local telescope = {}
 
 telescope.actions = {}
 
-telescope.actions.load_session = function(prompt_bufnr)
+-- Load a session
+telescope.actions._load_session = function(prompt_bufnr)
     local selection = require("telescope.actions.state").get_selected_entry()
     require("telescope.actions").close(prompt_bufnr)
     actions.load_session(selection.value.path)
 end
 
-telescope.actions.delete_session = function(prompt_bufnr)
+-- Delete a session
+telescope.actions._delete_session = function(prompt_bufnr)
     local selection = require("telescope.actions.state").get_selected_entry()
     local current_picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
     current_picker:delete_selection(function()
@@ -25,7 +27,7 @@ end
 -- Search for sessions
 -- @param session_dir string: The directory where the session files are saved
 -- @param delimiter string: The delimiter to use in the session file name
-telescope.search_session = function(session_dir, delimiter)
+telescope._search_session = function(session_dir, delimiter)
     local opts = {
         prompt_title = "Sessions",
         cwd = session_dir,
@@ -73,8 +75,8 @@ telescope.search_session = function(session_dir, delimiter)
             previewer = telescope_config.grep_previewer(opts),
             sorter = telescope_config.file_sorter(opts),
             attach_mappings = function(_, map)
-                telescope_actions.select_default:replace(telescope.actions.load_session)
-                map("i", "<C-d>", telescope.actions.delete_session)
+                telescope_actions.select_default:replace(telescope.actions._load_session)
+                map("i", "<C-d>", telescope.actions._delete_session)
                 return true
             end,
         })
@@ -87,7 +89,7 @@ end
 -- @param delimiter string: The delimiter to use in the session file name
 telescope.setup_keymaps = function(keymap, session_dir, delimiter)
     vim.keymap.set("n", keymap, function()
-        telescope.search_session(session_dir, delimiter)
+        telescope._search_session(session_dir, delimiter)
     end, {
         noremap = true,
         desc = "Sessions",

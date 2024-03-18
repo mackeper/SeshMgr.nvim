@@ -48,6 +48,7 @@ With [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
 ```lua
 {
     "mackeper/seshmgr.nvim",
+    event = "VeryLazy",
     opts = {},
 
     -- optional keymappings

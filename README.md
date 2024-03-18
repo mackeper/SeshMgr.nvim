@@ -24,14 +24,14 @@ By default, autosave is enabled to save the session when exiting Neovim. This ca
 
 ## Commands :keyboard:
 
-```lua
-:SessionSave
-:SessionLoad {session_name}
-:SessionLoadLast
-:SessionDelete {session_name}
-:SessionDeleteCurrent
-:SessionList
-```
+| Command | Description |
+:-------------------------|:-------------------------
+`:SessionSave` | Save the current session by current working directory (cwd).
+`:SessionLoad {session_name}` | Load the given session.
+`:SessionLoadLast` | Load the last session.
+`:SessionDelete {session_name}` | Delete the given session.
+`:SessionDeleteCurrent` | Delete the file associated with the current session.
+`:SessionList` | List all session files.
 
 ## Telescope :telescope:
 
@@ -53,8 +53,15 @@ With [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
 {
-   "mackeper/seshmgr.nvim",
-   opts = {},
+    "mackeper/seshmgr.nvim",
+    opts = {},
+
+    -- optional keymappings
+    keys = {
+        { "<leader>sl", "<CMD>SessionLoadLast<CR>", desc = "Load last session" },
+        { "<leader>sL", "<CMD>SessionList<CR>", desc = "List sessions" },
+        { "<leader>ss", "<CMD>SessionSave<CR>", desc = "Save session" },
+    },
 }
 ```
 

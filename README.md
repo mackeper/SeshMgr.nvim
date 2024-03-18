@@ -55,7 +55,8 @@ With [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
 {
     "mackeper/seshmgr.nvim",
     opts = {},
-    -- optional
+
+    -- optional keymappings
     keys = {
         { "<leader>sl", "<CMD>SessionLoadLast<CR>", desc = "Load last session" },
         { "<leader>sL", "<CMD>SessionList<CR>", desc = "List sessions" },

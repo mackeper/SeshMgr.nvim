@@ -53,8 +53,14 @@ With [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
 {
-   "mackeper/seshmgr.nvim",
-   opts = {},
+    "mackeper/seshmgr.nvim",
+    opts = {},
+    -- optional
+    keys = {
+        { "<leader>sl", "<CMD>SessionLoadLast<CR>", desc = "Load last session" },
+        { "<leader>sL", "<CMD>SessionList<CR>", desc = "List sessions" },
+        { "<leader>ss", "<CMD>SessionSave<CR>", desc = "Save session" },
+    },
 }
 ```
 

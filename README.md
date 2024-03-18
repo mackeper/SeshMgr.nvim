@@ -35,15 +35,9 @@ By default, autosave is enabled to save the session when exiting Neovim. This ca
 
 ## Telescope :telescope:
 
-> [!WARNING]
-> Not implemented yet, enable telescope in the configuration.
-
-```lua
-require('telescope').load_extension('seshmgr')
-```
-
 You can delete and load sessions using telescope.
 
+- `<leader>js` to open telescope ([configurable](#configuration-wrench))
 - `<CR>` to load session.
 - `<C-d>` to delete session.
 

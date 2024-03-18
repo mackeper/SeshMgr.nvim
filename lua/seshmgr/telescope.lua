@@ -49,7 +49,7 @@ telescope._search_session = function(session_dir, delimiter)
     })
 
     local make_display = function(entry)
-        return displayer({ { util.get_decoded_session_file_path(entry.name, delimiter) }, { entry.readable_time } })
+        return displayer({ { util._get_decoded_session_file_path(entry.name, delimiter) }, { entry.readable_time } })
     end
 
     -- Sort the sessions by most recent

@@ -83,7 +83,7 @@ end
 -- @param delimiter string: The delimiter to use in the session file name
 -- @return string: The path to the session file
 actions.get_session_file_path = function(session_dir, delimiter)
-    return session_dir .. "/" .. util.get_encoded_cwd(delimiter) .. ".vim"
+    return session_dir .. "/" .. util._get_encoded_cwd(delimiter) .. ".vim"
 end
 
 return actions

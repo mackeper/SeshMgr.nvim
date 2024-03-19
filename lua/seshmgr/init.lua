@@ -3,14 +3,32 @@
 ---
 --- MIT License Copyright (c) 2024 Marcus Östling
 --- ==============================================================================
+---
+--- SeshMgr.nvim is a session management plugin for Neovim to save and load sessions.
+--- I made this plugin for myself, there are many other plugins that do the same thing.
+--- The main difference is that this plugin is that the telescope integration
+--- lists session with timestamps and in order of last used.
+---
+--- # Setup ~
+---
+--- `require("seshmgr").setup({})` (replace `{}` with your `configuration`)
+---
+--- # Commands ~
+---
+---   - `:SessionSave` - Save the current session by current working directory (cwd).
+---   - `:SessionLoad {session_full_path}` - Load the given session path.
+---   - `:SessionLoadLast` - Load the last session.
+---   - `:SessionDelete {session_full_path}` - Delete the given session.
+---   - `:SessionDeleteCurrent` - Delete the file associated with the current session.
+---   - `:SessionList` - List all session files.
+---
 
 local SeshMgr = {}
 
 --- Plugin configuration
---
+---
 --- Default values:
 ---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
----@text # Options ~
 SeshMgr.config = {
     sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
 
@@ -25,6 +43,24 @@ SeshMgr.config = {
         keymap = "<leader>js",
     },
 }
+
+--- Setup the plugin
+---
+---@param opts table Options to override the default configuration
+---
+---@usage `require("seshmgr").setup({})` (replace `{}` with your `configuration`)
+SeshMgr.setup = function(opts)
+    opts = opts or {}
+
+    -- Merging the user's configuration with the default configuration
+    SeshMgr.config = vim.tbl_deep_extend("force", {}, SeshMgr.config, opts)
+
+    vim.o.sessionoptions = SeshMgr.config.sessionoptions
+
+    SeshMgr._setup_commands()
+    SeshMgr._setup_autocmds()
+    SeshMgr._setup_keymaps()
+end
 
 -- Setup the commands
 SeshMgr._setup_commands = function()
@@ -63,24 +99,6 @@ SeshMgr._setup_keymaps = function()
             SeshMgr.config.session_name_delimiter
         )
     end
-end
-
---- Setup the plugin
----
----@param opts table Options to override the default configuration
----
----@usage `require("seshmgr").setup({})` (replace `{}` with your `configuration`)
-SeshMgr.setup = function(opts)
-    opts = opts or {}
-
-    -- Merging the user's configuration with the default configuration
-    SeshMgr.config = vim.tbl_deep_extend("force", {}, SeshMgr.config, opts)
-
-    vim.o.sessionoptions = SeshMgr.config.sessionoptions
-
-    SeshMgr._setup_commands()
-    SeshMgr._setup_autocmds()
-    SeshMgr._setup_keymaps()
 end
 
 return SeshMgr

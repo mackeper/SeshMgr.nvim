@@ -30,9 +30,10 @@ telescope.actions._delete_session = function(prompt_bufnr)
 end
 
 -- Search for sessions
+--
 --@param session_dir string The directory where the session files are saved
 --@param delimiter string The delimiter to use in the session file name
-telescope._search_session = function(session_dir, delimiter)
+telescope.search_session = function(session_dir, delimiter)
     local opts = {
         prompt_title = "Sessions",
         cwd = session_dir,

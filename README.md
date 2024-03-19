@@ -67,7 +67,7 @@ Default configuration:
 ```lua
 {
     session_dir = vim.fn.stdpath("data") .. "/sessions",
-    session_name_delimiter = "_-_",
+    session_name_delimiter = "!",
 
     autosave_events = { "ExitPre" },
     autosave = true,

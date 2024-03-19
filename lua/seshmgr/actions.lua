@@ -1,16 +1,20 @@
 local util = require("seshmgr.util")
 
+--- *SeshMgr.action*
 local actions = {}
 
--- Load a session
--- @param session_file_path string: The path to the session file
+--- Load a session
+---
+---@param session_file_path string The path to the session file
 actions.load_session = function(session_file_path)
     vim.cmd("source " .. session_file_path)
 end
 
--- Load the last session
--- @param session_dir string: The directory where the session file will be saved
--- @return boolean: Whether the last session was loaded
+--- Load the last session
+---
+---@param session_dir string The directory where the session file will be saved
+---
+---@return boolean Whether the last session was loaded
 actions.load_last = function(session_dir)
     local sessions = actions.get_sessions(session_dir)
 
@@ -30,10 +34,12 @@ actions.load_last = function(session_dir)
     return false
 end
 
--- Save the current session
--- @param session_dir string: The directory where the session file will be saved
--- @param session_file_name string: The name of the session file
--- @return boolean: Whether the session was saved
+--- Save the current session
+---
+---@param session_dir string The directory where the session file will be saved
+---@param session_file_name string The name of the session file
+---
+---@return boolean Whether the session was saved
 actions.save_session = function(session_dir, session_file_name)
     if vim.bo.filetype == "gitcommit" then
         return false
@@ -47,22 +53,27 @@ actions.save_session = function(session_dir, session_file_name)
     return true
 end
 
--- Delete a session
--- @param session_file_path string: The path to the session file
+--- Delete a session
+---
+---@param session_file_path string The path to the session file
 actions.delete_session = function(session_file_path)
     vim.fn.delete(session_file_path)
 end
 
--- Check if a session file exists
--- @param session_file_path string: The path to the session file
--- @return boolean: Whether the session file exists
+--- Check if a session file exists
+---
+---@param session_file_path string The path to the session file
+---
+---@return boolean Whether the session file exists
 actions.session_exists = function(session_file_path)
     return vim.fn.filereadable(session_file_path) == 1
 end
 
--- Get all the sessions
--- @param session_dir string: The directory where the session files are saved
--- @return table: A list of sessions with name, path, time, and readable_time
+--- Get all the sessions
+---
+---@param session_dir string The directory where the session files are saved
+---
+---@return table A list of sessions with name, path, time, and readable_time
 actions.get_sessions = function(session_dir)
     local session_files = vim.fn.readdir(session_dir)
     local sessions = {}
@@ -78,10 +89,12 @@ actions.get_sessions = function(session_dir)
     return sessions
 end
 
--- Get the session file path
--- @param session_dir string: The directory where the session file will be saved
--- @param delimiter string: The delimiter to use in the session file name
--- @return string: The path to the session file
+--- Get the session file path
+---
+---@param session_dir string The directory where the session file will be saved
+---@param delimiter string The delimiter to use in the session file name
+---
+---@return string The path to the session file
 actions.get_session_file_path = function(session_dir, delimiter)
     return session_dir .. "/" .. util._get_encoded_cwd(delimiter) .. ".vim"
 end

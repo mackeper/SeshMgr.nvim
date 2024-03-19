@@ -1,11 +1,13 @@
 local actions = require("seshmgr.actions")
 
+--- *SeshMgr.autocmds*
 local autocmds = {}
 
--- Start autosaving the session
--- @param session_dir string: The directory where the session file will be saved
--- @param delimiter string: The delimiter to use in the session file name
--- @param events table: The events to trigger the autosave
+--- Start autosaving the session
+---
+---@param session_dir string The directory where the session file will be saved
+---@param delimiter string The delimiter to use in the session file name
+---@param events table The events to trigger the autosave
 autocmds.start_autosave = function(session_dir, delimiter, events)
     vim.api.nvim_create_autocmd(events, {
         desc = "Save session on exit",
@@ -16,7 +18,7 @@ autocmds.start_autosave = function(session_dir, delimiter, events)
     })
 end
 
--- Stop autosaving the session
+--- Stop autosaving the session
 autocmds.stop_autosave = function()
     vim.api.nvim_clear_autocmds({ group = "seshmgr.autosave" })
 end

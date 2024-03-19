@@ -1,100 +1,216 @@
 ==============================================================================
+------------------------------------------------------------------------------
+*seshmgr.nvim* Neovim session management plugin
+*SeshMgr*
 
-SeshMgr                                                               *seshmgr*
-
-The plugin provides tools to easier manage sessions.
-
+MIT License Copyright (c) 2024 Marcus Östling
 ==============================================================================
 
-1. Introduction                                                 *seshmgr-intro*
-2. Options                                                    *seshmgr-options*
-3. Commands                                                  *seshmgr-commands*
-4. Auto commands                                        *seshmgr-auto-commands*
-5. Telescope integration                        *seshmgr-telescope-integration*
+------------------------------------------------------------------------------
+Plugin configuration
+
+------------------------------------------------------------------------------
+                                                                *SeshMgr.config*
+                                `SeshMgr.config`
+Default values:
+>
+  SeshMgr.config = {
+      sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
+
+      session_dir = vim.fn.stdpath("data") .. "/sessions",
+      session_name_delimiter = "*",
+
+      autosave_events = { "ExitPre" },
+      autosave = true,
+
+      telescope = {
+          enabled = true,
+          keymap = "<leader>js",
+      },
+  }
+
+  -- Setup the commands
+  SeshMgr._setup_commands = function()
+      local commands = require("seshmgr.commands")
+
+      commands._setup_session_save(SeshMgr.config.session_dir, SeshMgr.config.session_name_delimiter)
+      commands._setup_session_load()
+      commands._setup_session_load_last(SeshMgr.config.session_dir)
+      commands._setup_session_delete()
+      commands._setup_session_delete_current(SeshMgr.config.session_dir, SeshMgr.config.session_name_delimiter)
+      commands._setup_session_list(SeshMgr.config.session_dir)
+  end
+
+  -- Setup the autocmds
+  SeshMgr._setup_autocmds = function()
+      local autocmds = require("seshmgr.autocmds")
+
+      if SeshMgr.config.autosave then
+          autocmds.start_autosave(
+              SeshMgr.config.session_dir,
+              SeshMgr.config.session_name_delimiter,
+              SeshMgr.config.autosave_events
+          )
+      end
+
+      -- autocmds.setup_nvimtree_fix()
+  end
+
+  -- Setup the keymaps
+  SeshMgr._setup_keymaps = function()
+      if SeshMgr.config.telescope.enabled then
+          local telescope = require("seshmgr.telescope")
+          telescope.setup_keymaps(
+              SeshMgr.config.telescope.keymap,
+              SeshMgr.config.session_dir,
+              SeshMgr.config.session_name_delimiter
+          )
+      end
+  end
+
+<
+# Options ~
+
+------------------------------------------------------------------------------
+                                                               *SeshMgr.setup()*
+                            `SeshMgr.setup`({opts})
+Setup the plugin
+
+Parameters ~
+{opts} `(table)` Options to override the default configuration
+
+Usage ~
+`require("seshmgr").setup({})` (replace `{}` with your `configuration`)
+
 
 ==============================================================================
+------------------------------------------------------------------------------
+                                                                       *actions*
+                                   `actions`
+*SeshMgr.action*
 
-1. Introduction                                                 *seshmgr-intro*
+------------------------------------------------------------------------------
+                                                        *actions.load_session()*
+                  `actions.load_session`({session_file_path})
+Load a session
 
-The plugin provides tools to easier manage sessions.
+Parameters ~
+{session_file_path} `(string)` The path to the session file
 
-==============================================================================
+------------------------------------------------------------------------------
+                                                           *actions.load_last()*
+                       `actions.load_last`({session_dir})
+Load the last session
 
-2. Options                                                    *seshmgr-options*
+Parameters ~
+{session_dir} `(string)` The directory where the session file will be saved
 
-The plugin provides the following default options:
-{
-    session_dir = vim.fn.stdpath("data") .. "/sessions",
-    session_name_delimiter = "!",
+Return ~
+`(boolean)` Whether the last session was loaded
 
-    autosave_events = { "ExitPre" },
-    autosave = true,
+------------------------------------------------------------------------------
+                                                        *actions.save_session()*
+           `actions.save_session`({session_dir}, {session_file_name})
+Save the current session
 
-    telescope = {
-        enabled = true,
-        keymap = "<leader>js",
-    },
-}
+Parameters ~
+{session_dir} `(string)` The directory where the session file will be saved
+{session_file_name} `(string)` The name of the session file
 
-==============================================================================
+Return ~
+`(boolean)` Whether the session was saved
 
-3. Commands                                                  *seshmgr-commands*
+------------------------------------------------------------------------------
+                                                      *actions.delete_session()*
+                 `actions.delete_session`({session_file_path})
+Delete a session
 
-The plugin provides the following commands:
-    - SessionSave
-    - SessionLoad {full path}
-    - SessionLoadLast
-    - SessionDelete {full path}
-    - SessionDeleteCurrent
-    - SessionList
+Parameters ~
+{session_file_path} `(string)` The path to the session file
 
-                                                  *seshmgr-commands:SessionSave*
-:SessionSave
+------------------------------------------------------------------------------
+                                                      *actions.session_exists()*
+                 `actions.session_exists`({session_file_path})
+Check if a session file exists
 
-   Save the current session.
+Parameters ~
+{session_file_path} `(string)` The path to the session file
 
-                                                  *seshmgr-commands:SessionLoad*
-:SessionLoad {full path}
+Return ~
+`(boolean)` Whether the session file exists
 
-    Load the session with the given path.
+------------------------------------------------------------------------------
+                                                        *actions.get_sessions()*
+                     `actions.get_sessions`({session_dir})
+Get all the sessions
 
-                                              *seshmgr-commands:SessionLoadLast*
-:SessionLoadLast
+Parameters ~
+{session_dir} `(string)` The directory where the session files are saved
 
-    Load the last saved session.
+Return ~
+`(table)` A list of sessions with name, path, time, and readable_time
 
-                                                *seshmgr-commands:SessionDelete*
-:SessionDelete {full path}
+------------------------------------------------------------------------------
+                                               *actions.get_session_file_path()*
+          `actions.get_session_file_path`({session_dir}, {delimiter})
+Get the session file path
 
-    Delete the session with the given path.
+Parameters ~
+{session_dir} `(string)` The directory where the session file will be saved
+{delimiter} `(string)` The delimiter to use in the session file name
 
-                                         *seshmgr-commands:SessionDeleteCurrent*
-:SessionDeleteCurrent
+Return ~
+`(string)` The path to the session file
 
-        Delete the current session.
-
-                                                  *seshmgr-commands:SessionList*
-:SessionList
-
-        List all the saved sessions.
-
-==============================================================================
-
-4. Auto commands                                        *seshmgr-auto-commands*
-
-The plugin provides the following auto commands:
-    - SessionAutoSave - configured to save the session on the events
-      specified in the `autosave_events` option.
-
-==============================================================================
-
-5. Telescope integration                        *seshmgr-telescope-integration*
-
-The plugin provides integration with the telescope plugin. The integration
-provides the following commands:
-    - Search sessions - configured to search for sessions in the `session_dir`
-      directory.
 
 ==============================================================================
+------------------------------------------------------------------------------
+                                                                      *autocmds*
+                                   `autocmds`
+*SeshMgr.autocmds*
 
-vim:tw=78:ts=8:ft=help:norl:
+------------------------------------------------------------------------------
+                                                     *autocmds.start_autosave()*
+        `autocmds.start_autosave`({session_dir}, {delimiter}, {events})
+Start autosaving the session
+
+Parameters ~
+{session_dir} `(string)` The directory where the session file will be saved
+{delimiter} `(string)` The delimiter to use in the session file name
+{events} `(table)` The events to trigger the autosave
+
+------------------------------------------------------------------------------
+                                                      *autocmds.stop_autosave()*
+                           `autocmds.stop_autosave`()
+Stop autosaving the session
+
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                      *commands*
+                                   `commands`
+*SeshMgr.commands*
+Only contains private functions to setup the commands
+
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                     *telescope*
+                                  `telescope`
+*SeshMgr.telescope*
+
+Telescope integration
+
+------------------------------------------------------------------------------
+                                                     *telescope.setup_keymaps()*
+        `telescope.setup_keymaps`({keymap}, {session_dir}, {delimiter})
+Setup the telescope keymaps
+
+Parameters ~
+{keymap} `(string)` The keymap to use
+{session_dir} `(string)` The directory where the session files are saved
+{delimiter} `(string)` The delimiter to use in the session file name
+
+
+ vim:tw=78:ts=8:noet:ft=help:norl:
+

@@ -1,6 +1,9 @@
 local actions = require("seshmgr.actions")
 
 --- *SeshMgr.autocmds*
+---
+---@usage `require("seshmgr.autocmds")`
+
 local autocmds = {}
 
 --- Start autosaving the session

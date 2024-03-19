@@ -13,15 +13,6 @@
 ---
 --- `require("seshmgr").setup({})` (replace `{}` with your `configuration`)
 ---
---- # Commands ~
----
----   - `:SessionSave` - Save the current session by current working directory (cwd).
----   - `:SessionLoad {session_full_path}` - Load the given session path.
----   - `:SessionLoadLast` - Load the last session.
----   - `:SessionDelete {session_full_path}` - Delete the given session.
----   - `:SessionDeleteCurrent` - Delete the file associated with the current session.
----   - `:SessionList` - List all session files.
----
 
 local SeshMgr = {}
 

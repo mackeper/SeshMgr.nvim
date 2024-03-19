@@ -7,6 +7,8 @@ local util = require("seshmgr.util")
 --- *SeshMgr.telescope*
 ---
 --- Telescope integration
+---
+---@usage `require("seshmgr.telescope")`
 local telescope = {}
 
 telescope.actions = {}

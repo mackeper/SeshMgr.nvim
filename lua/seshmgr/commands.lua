@@ -1,7 +1,16 @@
 local actions = require("seshmgr.actions")
 
 --- *SeshMgr.commands*
---- Only contains private functions to setup the commands
+---
+---   - `:SessionSave` - Save the current session by current working directory (cwd).
+---   - `:SessionLoad {session_full_path}` - Load the given session path.
+---   - `:SessionLoadLast` - Load the last session.
+---   - `:SessionDelete {session_full_path}` - Delete the given session.
+---   - `:SessionDeleteCurrent` - Delete the file associated with the current session.
+---   - `:SessionList` - List all session files.
+---
+---@usage `require("seshmgr.commands")`
+
 local commands = {}
 
 -- Setup the save command

@@ -1,6 +1,9 @@
 local util = require("seshmgr.util")
 
 --- *SeshMgr.action*
+---
+---@usage `require("seshmgr.actions")`
+
 local actions = {}
 
 --- Load a session

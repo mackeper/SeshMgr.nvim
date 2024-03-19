@@ -5,15 +5,15 @@ local commands = {}
 -- Setup the save command
 -- @param session_dir string: The directory where the session file will be saved
 -- @param delimiter string: The delimiter to use in the session file name
-commands.setup_save = function(session_dir, delimiter)
+commands.setup_session_save = function(session_dir, delimiter)
     vim.api.nvim_create_user_command("SessionSave", function()
         actions.save_session(session_dir, actions.get_session_file_path(session_dir, delimiter))
     end, { nargs = 0 })
 end
 
 -- Setup the load command
--- The command will take a single argument, the name of the session file to load
-commands.setup_load = function()
+-- The command will take a single argument, the path of the session file to load
+commands.setup_session_load = function()
     vim.api.nvim_create_user_command("SessionLoad", function(args)
         actions.load_session(args.args)
     end, { nargs = 1 })
@@ -21,15 +21,15 @@ end
 
 -- Setup the load last command
 -- @param session_dir string: The directory where the session file will be saved
-commands.setup_load_last = function(session_dir)
+commands.setup_session_load_last = function(session_dir)
     vim.api.nvim_create_user_command("SessionLoadLast", function()
         actions.load_last(session_dir)
     end, { nargs = 0 })
 end
 
 -- Setup the delete command
--- The command will take a single argument, the name of the session file to delete
-commands.setup_delete = function()
+-- The command will take a single argument, the path of the session file to delete
+commands.setup_session_delete = function()
     vim.api.nvim_create_user_command("SessionDelete", function(args)
         actions.delete_session(args.args)
     end, { nargs = 1 })
@@ -38,7 +38,7 @@ end
 -- Setup the delete current command
 -- @param session_dir string: The directory where the session file will be saved
 -- @param delimiter string: The delimiter to use in the session file name
-commands.setup_delete_current = function(session_dir, delimiter)
+commands.setup_session_delete_current = function(session_dir, delimiter)
     vim.api.nvim_create_user_command("SessionDeleteCurrent", function()
         actions.delete_session(actions.get_session_file_path(session_dir, delimiter))
     end, { nargs = 0 })
@@ -46,7 +46,7 @@ end
 
 -- Setup the list command
 -- @param session_dir string: The directory where the session files are saved
-commands.setup_list = function(session_dir)
+commands.setup_session_list = function(session_dir)
     vim.api.nvim_create_user_command("SessionList", function()
         local sessions = actions.get_sessions(session_dir)
         for _, session in ipairs(sessions) do

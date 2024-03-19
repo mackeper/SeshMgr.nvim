@@ -5,7 +5,7 @@ M.config = {
     sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
 
     session_dir = vim.fn.stdpath("data") .. "/sessions",
-    session_name_delimiter = "!",
+    session_name_delimiter = "*",
 
     autosave_events = { "ExitPre" },
     autosave = true,
@@ -20,12 +20,12 @@ M.config = {
 M._setup_commands = function()
     local commands = require("seshmgr.commands")
 
-    commands.setup_save(M.config.session_dir, M.config.session_name_delimiter)
-    commands.setup_load()
-    commands.setup_load_last(M.config.session_dir)
-    commands.setup_delete()
-    commands.setup_delete_current(M.config.session_dir, M.config.session_name_delimiter)
-    commands.setup_list(M.config.session_dir)
+    commands.setup_session_save(M.config.session_dir, M.config.session_name_delimiter)
+    commands.setup_session_load()
+    commands.setup_session_load_last(M.config.session_dir)
+    commands.setup_session_delete()
+    commands.setup_session_delete_current(M.config.session_dir, M.config.session_name_delimiter)
+    commands.setup_session_list(M.config.session_dir)
 end
 
 -- Setup the autocmds

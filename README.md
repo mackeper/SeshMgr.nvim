@@ -27,9 +27,9 @@ By default, autosave is enabled to save the session when exiting Neovim. This ca
 | Command | Description |
 :-------------------------|:-------------------------
 `:SessionSave` | Save the current session by current working directory (cwd).
-`:SessionLoad {session_name}` | Load the given session.
+`:SessionLoad {session_full_path}` | Load the given session path.
 `:SessionLoadLast` | Load the last session.
-`:SessionDelete {session_name}` | Delete the given session.
+`:SessionDelete {session_full_path}` | Delete the given session.
 `:SessionDeleteCurrent` | Delete the file associated with the current session.
 `:SessionList` | List all session files.
 

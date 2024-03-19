@@ -42,9 +42,9 @@ The plugin provides the following default options:
 
 The plugin provides the following commands:
     - SessionSave
-    - SessionLoad {name}
+    - SessionLoad {full path}
     - SessionLoadLast
-    - SessionDelete {name}
+    - SessionDelete {full path}
     - SessionDeleteCurrent
     - SessionList
 
@@ -54,9 +54,9 @@ The plugin provides the following commands:
    Save the current session.
 
                                                   *seshmgr-commands:SessionLoad*
-:SessionLoad {name}
+:SessionLoad {full path}
 
-    Load the session with the given name.
+    Load the session with the given path.
 
                                               *seshmgr-commands:SessionLoadLast*
 :SessionLoadLast
@@ -64,9 +64,9 @@ The plugin provides the following commands:
     Load the last saved session.
 
                                                 *seshmgr-commands:SessionDelete*
-:SessionDelete {name}
+:SessionDelete {full path}
 
-    Delete the session with the given name.
+    Delete the session with the given path.
 
                                          *seshmgr-commands:SessionDeleteCurrent*
 :SessionDeleteCurrent

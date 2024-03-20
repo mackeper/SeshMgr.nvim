@@ -6,4 +6,4 @@
 
 ## How to run tests
 
-See [lua/Tests/README.md](lua/tests/README.md)
+See [Tests](lua/tests/README.md).

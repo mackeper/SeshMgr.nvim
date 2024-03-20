@@ -1,6 +1,6 @@
 -- Plugin manager: lazy.nvim
 -- We need lazy to install minimal amount of plugins
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy_minimal_init/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git",
@@ -18,13 +18,18 @@ vim.opt.rtp:prepend(lazypath)
 -- * nvim-lua/plenary.nvim to run tests
 -- * echasnovski/mini.doc to get documentation
 --
-require("lazy").setup({
+local lazy_opts = {
+    root = vim.fn.stdpath("data") .. "/lazy_minimal_init",
+}
+
+local plugins = {
     "nvim-lua/plenary.nvim",
     {
         "echasnovski/mini.doc",
-        version = false,
         config = function()
             require("mini.doc").setup({})
         end,
     },
-})
+}
+
+require("lazy").setup(plugins, lazy_opts)

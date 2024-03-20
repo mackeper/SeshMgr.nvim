@@ -1,0 +1,6 @@
+describe("util", function()
+    it("should return a table", function()
+        local util = require("seshmgr.util")
+        assert(util ~= nil)
+    end)
+end)

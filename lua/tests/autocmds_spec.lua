@@ -1,0 +1,6 @@
+describe("autocmds", function()
+    it("should return a table", function()
+        local autocmds = require("seshmgr.autocmds")
+        assert(autocmds ~= nil)
+    end)
+end)

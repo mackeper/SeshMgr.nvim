@@ -1,0 +1,6 @@
+describe("commands", function()
+    it("should return a table", function()
+        local commands = require("seshmgr.commands")
+        assert(commands ~= nil)
+    end)
+end)

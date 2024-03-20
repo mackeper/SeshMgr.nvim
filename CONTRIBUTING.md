@@ -6,4 +6,4 @@
 
 ## How to run tests
 
-You need Neovim with the plugin `plenary.nvim` installed. Then run `nvim --headless -c ':lua require("plenary")' -c 'PlenaryBustedDirectory lua/tests'.
+You need Neovim with the plugin `plenary.nvim` installed. Then run `nvim --headless -c ':lua require("plenary")' -c 'PlenaryBustedDirectory lua/tests'`.

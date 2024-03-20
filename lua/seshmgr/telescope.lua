@@ -35,7 +35,7 @@ end
 --
 --@param session_dir string The directory where the session files are saved
 --@param delimiter string The delimiter to use in the session file name
-telescope.search_session = function(session_dir, delimiter)
+telescope._search_session = function(session_dir, delimiter)
     local opts = {
         prompt_title = "Sessions",
         cwd = session_dir,

@@ -1,6 +1,6 @@
 # SeshMgr.nvim
 
-> [!WARNING]  
+> [!WARNING]
 > This plugin is not yet released. Major changes can be expected.
 
 <div align="center">
@@ -84,7 +84,7 @@ Default configuration:
 
 # Contributing :tada:
 
-TODO
+See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 # Related Projects :link:
 

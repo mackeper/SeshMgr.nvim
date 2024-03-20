@@ -1,5 +1,8 @@
 # SeshMgr.nvim
 
+> [!WARNING]  
+> This plugin is not yet released. Major changes can be expected.
+
 <div align="center">
 
 SeshMgr.nvim is a session management plugin for Neovim to save and load sessions.

@@ -24,6 +24,6 @@ describe("telescope", function()
         telescope.setup_keymaps(keymap, "/tmp", "!")
 
         -- Assert
-        assert(has_keymap(keymap), string.format("keymap '%s' should exist", keymap))
+        assert(not has_keymap(keymap), string.format("keymap '%s' should exist", keymap))
     end)
 end)

@@ -34,7 +34,7 @@ jobs:
           export VIM="${PWD}/_neovim/share/nvim/runtime"
           nvim --version
           echo "Removing old docs..."
-          rm doc/seshmgr.txt
+          rm doc/SeshMgr.txt
           echo "Current directory:"
           echo ${PWD}
           echo "Current directory contents:"
@@ -45,7 +45,7 @@ jobs:
           ls doc
           echo "Printing docs..."
           echo "====================="
-          cat doc/seshmgr.txt
+          cat doc/SeshMgr.txt
           echo "====================="
           echo "Checking docs..."
-          git diff doc/seshmgr.txt
+          git diff doc/SeshMgr.txt

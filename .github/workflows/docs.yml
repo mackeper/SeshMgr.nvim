@@ -33,6 +33,11 @@ jobs:
           export PATH="${PWD}/_neovim/bin:${PATH}"
           export VIM="${PWD}/_neovim/share/nvim/runtime"
           nvim --version
+          echo "ls"
           ls
+          echo "ls _neovim"
+          ls _neovim
+          echo "ls ~/.local/share/nvim/site/pack/vendor/start"
+          ls ~/.local/share/nvim/site/pack/vendor/start
           ./scripts/generate_docs.sh
           git diff --exit-code doc/SeshMgr.txt

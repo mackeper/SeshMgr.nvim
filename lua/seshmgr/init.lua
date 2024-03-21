@@ -19,7 +19,7 @@ local SeshMgr = {}
 --- Plugin configuration
 ---
 --- Default values:
----@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
+---@eval return require("mini.doc").afterlines_to_code(require("mini.doc").current.eval_section)
 SeshMgr.config = {
     sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
 

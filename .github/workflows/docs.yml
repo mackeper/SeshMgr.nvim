@@ -41,6 +41,8 @@ jobs:
           ls
           echo "Generating docs..."
           ./scripts/generate_docs.sh
+          echo "Check new files..."
+          ls doc
           echo "Printing docs..."
           echo "====================="
           cat doc/seshmgr.txt

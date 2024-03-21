@@ -33,11 +33,14 @@ jobs:
           export PATH="${PWD}/_neovim/bin:${PATH}"
           export VIM="${PWD}/_neovim/share/nvim/runtime"
           nvim --version
+          echo "Removing old docs..."
+          rm doc/seshmgr.txt
+          echo "Current directory:"
+          cat ${PWD}
+          echo "Current directory contents:"
+          ls
           echo "Generating docs..."
           ./scripts/generate_docs.sh
-          rm doc/seshmgr.txt
-          cat ${PWD}
-          ls
           echo "Printing docs..."
           echo "====================="
           cat doc/seshmgr.txt

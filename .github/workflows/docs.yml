@@ -35,5 +35,9 @@ jobs:
           nvim --version
           echo "Generating docs..."
           ./scripts/generate_docs.sh
+          echo "Printing docs..."
+          echo "====================="
+          cat doc/seshmgr.txt
+          echo "====================="
           echo "Checking docs..."
           git diff doc/seshmgr.txt

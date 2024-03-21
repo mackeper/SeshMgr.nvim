@@ -1,12 +1,12 @@
 # Heavily inspired by the telescope.nvim project
 # https://github.com/nvim-telescope/telescope.nvim/blob/master/.github/workflows/ci.yml
-name: Tests
+name: Docs
 
 on: [pull_request]
 
 jobs:
   unit_tests:
-    name: unit tests
+    name: docs
     runs-on: ubuntu-latest
 
     steps:
@@ -25,12 +25,13 @@ jobs:
             curl -sL "https://github.com/neovim/neovim/releases/download/v0.9.0/nvim-linux64.tar.gz" | tar xzf - --strip-components=1 -C "${PWD}/_neovim"
           }
           mkdir -p ~/.local/share/nvim/site/pack/vendor/start
-          git clone --depth 1 https://github.com/nvim-lua/plenary.nvim ~/.local/share/nvim/site/pack/vendor/start/plenary.nvim
+          git clone --depth 1 https://github.com/echasnovski/mini.doc ~/.local/share/nvim/site/pack/vendor/start/mini.doc
           ln -s $(pwd) ~/.local/share/nvim/site/pack/vendor/start
 
-      - name: Run tests
+      - name: Check docs
         run: |
           export PATH="${PWD}/_neovim/bin:${PATH}"
           export VIM="${PWD}/_neovim/share/nvim/runtime"
           nvim --version
-          ./scripts/run_tests.sh
+          ./scripts/generate_docs.sh
+          git diff --exit-code doc/SeshMgr.txt

@@ -48,4 +48,4 @@ jobs:
           cat doc/SeshMgr.txt
           echo "====================="
           echo "Checking docs..."
-          git diff doc/SeshMgr.txt
+          git diff --exit-code doc/SeshMgr.txt

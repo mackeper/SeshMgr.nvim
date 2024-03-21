@@ -2,7 +2,7 @@
 # https://github.com/nvim-telescope/telescope.nvim/blob/master/.github/workflows/ci.yml
 name: Docs
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   unit_tests:

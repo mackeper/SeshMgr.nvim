@@ -1,6 +1,6 @@
 ==============================================================================
 ------------------------------------------------------------------------------
-*seshmgr.nvim*  session management plugin
+*seshmgr.nvim* Neovim session management plugin
 *SeshMgr*
 
 MIT License Copyright (c) 2024 Marcus Östling
@@ -194,4 +194,3 @@ Parameters ~
 
 
  vim:tw=78:ts=8:noet:ft=help:norl:
-

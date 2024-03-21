@@ -1,3 +1,5 @@
+# Heavily inspired by the telescope.nvim project
+# https://github.com/nvim-telescope/telescope.nvim/blob/master/.github/workflows/ci.yml
 name: Tests
 
 on: [push, pull_request]

@@ -4,9 +4,8 @@
 
 SeshMgr.nvim is a session management plugin for Neovim to save and load sessions.
 
-
 ![Logo](./.github/images/image.png)
- 
+
 [![Docs](https://github.com/mackeper/SeshMgr.nvim/actions/workflows/docs.yml/badge.svg)](https://github.com/mackeper/SeshMgr.nvim/actions/workflows/docs.yml)
 [![Tests](https://github.com/mackeper/SeshMgr.nvim/actions/workflows/tests.yml/badge.svg)](https://github.com/mackeper/SeshMgr.nvim/actions/workflows/tests.yml)
 
@@ -50,7 +49,8 @@ You can delete and load sessions using telescope.
 
 # Installation :package:
 
-With [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
+<details>
+<summary>With <a href="https://github.com/folke/lazy.nvim">folke/lazy.nvim</a></summary>
 
 ```lua
 {
@@ -65,11 +65,35 @@ With [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
         { "<leader>ss", "<CMD>SessionSave<CR>", desc = "Save session" },
     },
 }
+
 ```
+
+You need to either have the `opts` table or call the `setup({})` function in your config.
+
+</details>
 
 # Configuration :gear:
 
-Default configuration:
+To configure the plugin, pass a table to the setup function or in the case of lazy the opts table.
+
+<details>
+<summary>Example</summary>
+
+```lua
+require("seshmgr").setup({
+    session_dir = vim.fn.stdpath("data") .. "/my_sessions",
+
+    autosave = false,
+
+    telescope = {
+        enabled = false,
+    },
+})
+```
+
+</details>
+
+### Default configuration
 
 ```lua
 {

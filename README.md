@@ -18,17 +18,17 @@ SeshMgr.nvim is a session management plugin for Neovim to save and load sessions
 
 </div>
 
-# Introduction :wave:
+## Introduction :wave:
 
 I made this plugin for myself, there are many other plugins that do the same thing, see [related projects](#related-projects-link).
 The main difference is that this plugin is that the telescope integration lists session with timestamps and in order of last used.
 
-# Features :sparkles:
+## Features :sparkles:
 
 Manually save and load sessions using [commands](#commands-keyboard) or use [telescope](#telescope-telescope) to manage sessions.
 By default, autosave is enabled to save the session when exiting Neovim. This can be disabled in the [configuration](#configuration-wrench).
 
-## Commands :keyboard:
+### Commands :keyboard:
 
 | Command | Description |
 :-------------------------|:-------------------------
@@ -39,7 +39,7 @@ By default, autosave is enabled to save the session when exiting Neovim. This ca
 `:SessionDeleteCurrent` | Delete the file associated with the current session.
 `:SessionList` | List all session files.
 
-## Telescope :telescope:
+### Telescope :telescope:
 
 You can delete and load sessions using telescope.
 
@@ -47,7 +47,7 @@ You can delete and load sessions using telescope.
 - `<CR>` to load session.
 - `<C-d>` to delete session.
 
-# Installation :package:
+## Installation :package:
 
 <details>
 <summary>With <a href="https://github.com/folke/lazy.nvim">folke/lazy.nvim</a></summary>
@@ -72,7 +72,7 @@ You need to either have the `opts` table or call the `setup({})` function in you
 
 </details>
 
-# Configuration :gear:
+## Configuration :gear:
 
 To configure the plugin, pass a table to the setup function or in the case of lazy the opts table.
 
@@ -110,11 +110,11 @@ require("seshmgr").setup({
 }
 ```
 
-# Contributing :tada:
+## Contributing :tada:
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-# Related Projects :link:
+## Related Projects :link:
 
 - [rmagatti/auto-session](https://github.com/rmagatti/auto-session)
 - [echasnovski/mini.nvim#mini.sessions](https://github.com/echasnovski/mini.nvim#mini.sessions)

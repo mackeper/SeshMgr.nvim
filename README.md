@@ -1,26 +1,30 @@
 # SeshMgr.nvim
 
-> [!WARNING]
-> This plugin is not yet released. Major changes can be expected.
-
 <div align="center">
 
 SeshMgr.nvim is a session management plugin for Neovim to save and load sessions.
 
-I made this plugin for myself, there are many other plugins that do the same thing, see [related projects](#related-projects-link).
-The main difference is that this plugin is that the telescope integration lists session with timestamps and in order of last used.
 
 ![Logo](./.github/images/image.png)
+ 
+[![Docs](https://github.com/mackeper/SeshMgr.nvim/actions/workflows/docs.yml/badge.svg)](https://github.com/mackeper/SeshMgr.nvim/actions/workflows/docs.yml)
+[![Tests](https://github.com/mackeper/SeshMgr.nvim/actions/workflows/tests.yml/badge.svg)](https://github.com/mackeper/SeshMgr.nvim/actions/workflows/tests.yml)
 
-[Usage](#usage-computer) •
-[Installation](#installation-inbox_tray) •
-[Configuration](#configuration-wrench) •
+[Introduction](#introduction-wave) •
+[Features](#features-sparkles) •
+[Installation](#installation-package) •
+[Configuration](#configuration-gear) •
 [Contributing](#contributing-tada) •
 [Related Projects](#related-projects-link)
 
 </div>
 
-# Usage :computer:
+# Introduction :wave:
+
+I made this plugin for myself, there are many other plugins that do the same thing, see [related projects](#related-projects-link).
+The main difference is that this plugin is that the telescope integration lists session with timestamps and in order of last used.
+
+# Features :sparkles:
 
 Manually save and load sessions using [commands](#commands-keyboard) or use [telescope](#telescope-telescope) to manage sessions.
 By default, autosave is enabled to save the session when exiting Neovim. This can be disabled in the [configuration](#configuration-wrench).
@@ -44,7 +48,7 @@ You can delete and load sessions using telescope.
 - `<CR>` to load session.
 - `<C-d>` to delete session.
 
-# Installation :inbox_tray:
+# Installation :package:
 
 With [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
 
@@ -63,7 +67,7 @@ With [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
 }
 ```
 
-# Configuration :wrench:
+# Configuration :gear:
 
 Default configuration:
 

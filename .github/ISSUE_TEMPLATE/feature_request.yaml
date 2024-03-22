@@ -18,12 +18,6 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: Use Case
-      description: Explain how this feature would benefit users or improve the overall experience.
-    validations:
-      required: true
-  - type: textarea
-    attributes:
       label: Proposed Solution
       description: If you have any ideas on how to implement the feature, share them here.
     validations:

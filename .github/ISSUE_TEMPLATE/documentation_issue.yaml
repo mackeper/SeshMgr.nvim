@@ -1,7 +1,7 @@
 name: 📚 Documentation Issue
 description: Report or suggest improvements to documentation
 title: "[DOC] <title>"
-labels: ["documentation"]
+labels: ["type: docs"]
 body:
   - type: textarea
     attributes:

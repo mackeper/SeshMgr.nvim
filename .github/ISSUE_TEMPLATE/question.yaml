@@ -1,7 +1,7 @@
 name: ❓ Question/Help
 description: Ask a question or request assistance
 title: "[QUESTION] <title>"
-labels: ["question"]
+labels: ["type: discussion"]
 body:
   - type: textarea
     attributes:

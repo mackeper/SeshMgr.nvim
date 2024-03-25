@@ -15,7 +15,7 @@ end
 
 --- Load the last session
 ---
----@param session_dir string The directory where the session file will be saved
+---@param session_dir string The directory where the session files are saved
 ---
 ---@return boolean Whether the last session was loaded
 actions.load_last = function(session_dir)
@@ -32,6 +32,21 @@ actions.load_last = function(session_dir)
 
     if last_session then
         actions.load_session(last_session.path)
+        return true
+    end
+    return false
+end
+
+--- Load the current session
+---
+---@param session_dir string The directory where the session files are saved
+---@param delimiter string The delimiter used in the session file path.
+---
+---@return boolean Returns true if the session exists and is successfully loaded, false otherwise.
+actions.load_current = function(session_dir, delimiter)
+    local session_file_path = actions.get_session_file_path(session_dir, delimiter)
+    if actions.session_exists(session_file_path) then
+        actions.load_session(session_file_path)
         return true
     end
     return false

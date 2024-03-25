@@ -33,10 +33,21 @@ end
 
 -- Setup the load last command
 --
---@param session_dir string: The directory where the session file will be saved
+--@param session_dir string: The directory where the session file is saved
 commands._setup_session_load_last = function(session_dir)
     vim.api.nvim_create_user_command("SessionLoadLast", function()
         actions.load_last(session_dir)
+    end, { nargs = 0 })
+end
+
+-- Setup the load current command
+-- The command will take a single argument, the path of the session file to load
+--
+-- @param session_dir string: The directory where the session file is saved
+-- @param delimiter string: The delimiter to use in the session file name
+commands._setup_session_load_current = function(session_dir, delimiter)
+    vim.api.nvim_create_user_command("SessionLoadCurrent", function()
+        actions.load_current(session_dir, delimiter)
     end, { nargs = 0 })
 end
 

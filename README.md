@@ -6,6 +6,10 @@ SeshMgr.nvim is a session management plugin for Neovim to save and load sessions
 
 ![Logo](./.github/images/image.png)
 
+<a href="https://dotfyle.com/plugins/mackeper/SeshMgr.nvim">
+	<img src="https://dotfyle.com/plugins/mackeper/SeshMgr.nvim/shield?style=flat" />
+</a>
+
 [![Docs](https://github.com/mackeper/SeshMgr.nvim/actions/workflows/docs.yml/badge.svg)](https://github.com/mackeper/SeshMgr.nvim/actions/workflows/docs.yml)
 [![Tests](https://github.com/mackeper/SeshMgr.nvim/actions/workflows/tests.yml/badge.svg)](https://github.com/mackeper/SeshMgr.nvim/actions/workflows/tests.yml)
 

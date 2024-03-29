@@ -59,7 +59,7 @@ You can delete and load sessions using telescope.
 
 ```lua
 {
-    "mackeper/seshmgr.nvim",
+    "mackeper/SeshMgr.nvim",
     event = "VeryLazy",
     opts = {},
 

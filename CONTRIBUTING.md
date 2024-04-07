@@ -4,6 +4,25 @@
 
 - Make a pull request
 
+## Requirements
+
+Of course, you need to have [Neovim](https://neovim.io/) installed.
+
+### Plugins
+
+- `nvim-lua/plenary.nvim` - for testing
+- `echasnovski/mini.doc` - for documentation
+- `folke/neodev.nvim` - (optional)
+
+```lua
+require("neodev").setup({
+    override = function(_, library)
+        library.enabled = true
+        library.plugins = true
+    end,
+})
+```
+
 ## How to run tests
 
 To run the tests, you need to have the [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) plugin installed.

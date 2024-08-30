@@ -10,6 +10,7 @@ local autocmds = {}
 ---
 ---@param session_dir string The directory where the session file will be saved
 ---@param delimiter string The delimiter to use in the session file name
+---@param windows_drive_delimiter string The delimiter to use in the session file name for Windows
 ---@param events table The events to trigger the autosave
 autocmds.start_autosave = function(session_dir, delimiter, windows_drive_delimiter, events)
     vim.api.nvim_create_autocmd(events, {

@@ -27,7 +27,10 @@ Default values:
       sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
 
       session_dir = vim.fn.stdpath("data") .. "/sessions",
-      session_name_delimiter = "*",
+
+      -- Both !! and $$ are allowed in a path on both Windows and Unix
+      session_name_delimiter = "!!",
+      session_windows_drive_delimiter = ";;",
 
       autosave_events = { "ExitPre" },
       autosave = true,
@@ -83,13 +86,13 @@ Return ~
 
 ------------------------------------------------------------------------------
                                                         *actions.load_current()*
-               `actions.load_current`({session_dir}, {delimiter})
+ `actions.load_current`({session_dir}, {delimiter}, {windows_drive_delimiter})
 Load the current session
 
 Parameters ~
 {session_dir} `(string)` The directory where the session files are saved
 {delimiter} `(string)` The delimiter used in the session file path.
-
+{windows_drive_delimiter} `(string)` The delimiter used in the session file path for Windows drives.
 Return ~
 `(boolean)` Returns true if the session exists and is successfully loaded, false otherwise.
 
@@ -137,13 +140,13 @@ Return ~
 
 ------------------------------------------------------------------------------
                                                *actions.get_session_file_path()*
-          `actions.get_session_file_path`({session_dir}, {delimiter})
+`actions.get_session_file_path`({session_dir}, {delimiter}, {windows_drive_delimiter})
 Get the session file path
 
 Parameters ~
 {session_dir} `(string)` The directory where the session file will be saved
 {delimiter} `(string)` The delimiter to use in the session file name
-
+{windows_drive_delimiter} `(string)` The delimiter to use in the session file name for Windows drives
 Return ~
 `(string)` The path to the session file
 
@@ -157,12 +160,13 @@ Usage ~
 
 ------------------------------------------------------------------------------
                                                      *autocmds.start_autosave()*
-        `autocmds.start_autosave`({session_dir}, {delimiter}, {events})
+`autocmds.start_autosave`({session_dir}, {delimiter}, {windows_drive_delimiter}, {events})
 Start autosaving the session
 
 Parameters ~
 {session_dir} `(string)` The directory where the session file will be saved
 {delimiter} `(string)` The delimiter to use in the session file name
+{windows_drive_delimiter} `(string)` The delimiter to use in the session file name for Windows
 {events} `(table)` The events to trigger the autosave
 
 ------------------------------------------------------------------------------

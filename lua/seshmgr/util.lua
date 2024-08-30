@@ -26,6 +26,7 @@ end
 
 -- Get the current working directory but with a different delimiter
 -- @param delimiter string: The delimiter to use in the encoded cwd
+-- @param windows_drive_delimiter string: The delimiter to use in the encoded cwd for Windows drives
 util._get_encoded_cwd = function(delimiter, windows_drive_delimiter)
     local encoded_cwd = vim.fn.substitute(vim.fn.getcwd(), util._get_env_delimiter(), delimiter, "g")
     if util._is_Windows() then
@@ -37,6 +38,7 @@ end
 -- Get the session file path with the original delimiter
 -- @param encoded_cwd string: The encoded cwd
 -- @param delimiter string: The delimiter to use in the session file name
+-- @param windows_drive_delimiter string: The delimiter to use in the session file name for Windows drives
 util._get_decoded_session_file_path = function(encoded_cwd, delimiter, windows_drive_delimiter)
     local cwd = vim.fn.substitute(encoded_cwd, delimiter, util._get_env_delimiter(), "g")
     if util._is_Windows() then

@@ -52,7 +52,7 @@ describe("util", function()
         local decoded_cwd = util._get_decoded_session_file_path(encoded_cwd, delimiter, drive_delimiter)
 
         -- Assert
-        local expected_decoded_cwd = "C:/test/seshmgr/tmp"
+        local expected_decoded_cwd = "C;;/test/seshmgr/tmp"
         if util._is_Windows() then
             expected_decoded_cwd = "C:\\test\\seshmgr\\tmp"
         end

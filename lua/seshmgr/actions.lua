@@ -47,7 +47,7 @@ end
 ---
 ---@param session_dir string The directory where the session files are saved
 ---@param delimiter string The delimiter used in the session file path.
----
+---@param windows_drive_delimiter string The delimiter used in the session file path for Windows drives.
 ---@return boolean Returns true if the session exists and is successfully loaded, false otherwise.
 actions.load_current = function(session_dir, delimiter, windows_drive_delimiter)
     local session_file_path = actions.get_session_file_path(session_dir, delimiter, windows_drive_delimiter)
@@ -120,7 +120,7 @@ end
 ---
 ---@param session_dir string The directory where the session file will be saved
 ---@param delimiter string The delimiter to use in the session file name
----
+---@param windows_drive_delimiter string The delimiter to use in the session file name for Windows drives
 ---@return string The path to the session file
 actions.get_session_file_path = function(session_dir, delimiter, windows_drive_delimiter)
     return session_dir .. util._get_env_delimiter() .. util._get_encoded_cwd(delimiter, windows_drive_delimiter) .. ".vim"

@@ -49,8 +49,8 @@ By default, autosave is enabled to save the session when exiting Neovim. This ca
 You can delete and load sessions using telescope.
 
 - `<leader>js` to open telescope ([configurable](#configuration-gear))
-- `<CR>` to load session.
-- `<C-d>` to delete session.
+    - `<CR>` to load session.
+    - `<C-d>` to delete session.
 
 ## Installation :package:
 
@@ -104,7 +104,8 @@ require("seshmgr").setup({
 ```lua
 {
     session_dir = vim.fn.stdpath("data") .. "/sessions",
-    session_name_delimiter = "!",
+    session_name_delimiter = "!!",
+    session_windows_drive_delimiter = ";;",
 
     autosave_events = { "ExitPre" },
     autosave = true,

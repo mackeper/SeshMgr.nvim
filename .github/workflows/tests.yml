@@ -7,7 +7,13 @@ on: [pull_request]
 jobs:
   unit_tests:
     name: unit tests
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        rev: [v0.9.5, v0.10.1]
+        include:
+          - os: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -16,13 +22,13 @@ jobs:
         uses: actions/cache@v3
         with:
           path: _neovim
-          key: ubuntu-v0.9.0/nvim-linux64.tar.gz-${{ hashFiles('todays-date') }}
+          key: ubuntu-${{matrix.rev}}/nvim-linux64.tar.gz-${{ hashFiles('todays-date') }}
 
       - name: Prepare
         run: |
           test -d _neovim || {
             mkdir -p _neovim
-            curl -sL "https://github.com/neovim/neovim/releases/download/v0.9.0/nvim-linux64.tar.gz" | tar xzf - --strip-components=1 -C "${PWD}/_neovim"
+            curl -sL "https://github.com/neovim/neovim/releases/download/${{matrix.rev}}/nvim-linux64.tar.gz" | tar xzf - --strip-components=1 -C "${PWD}/_neovim"
           }
           mkdir -p ~/.local/share/nvim/site/pack/vendor/start
           git clone --depth 1 https://github.com/nvim-lua/plenary.nvim ~/.local/share/nvim/site/pack/vendor/start/plenary.nvim

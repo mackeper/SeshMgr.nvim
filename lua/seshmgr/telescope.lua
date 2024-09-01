@@ -35,7 +35,8 @@ end
 --
 --@param session_dir string The directory where the session files are saved
 --@param delimiter string The delimiter to use in the session file name
-telescope._search_session = function(session_dir, delimiter)
+--@param windows_drive_delimiter string The delimiter to use for Windows drives
+telescope._search_session = function(session_dir, delimiter, windows_drive_delimiter)
     local opts = {
         prompt_title = "Sessions",
         cwd = session_dir,
@@ -57,7 +58,7 @@ telescope._search_session = function(session_dir, delimiter)
     })
 
     local make_display = function(entry)
-        return displayer({ { util._get_decoded_session_file_path(entry.name, delimiter) }, { entry.readable_time } })
+        return displayer({ { util._get_decoded_session_file_path(entry.name, delimiter, windows_drive_delimiter) }, { entry.readable_time } })
     end
 
     -- Sort the sessions by most recent
@@ -96,9 +97,10 @@ end
 ---@param keymap string The keymap to use
 ---@param session_dir string The directory where the session files are saved
 ---@param delimiter string The delimiter to use in the session file name
-telescope.setup_keymaps = function(keymap, session_dir, delimiter)
+---@param windows_drive_delimiter string The delimiter to use for Windows drives
+telescope.setup_keymaps = function(keymap, session_dir, delimiter, windows_drive_delimiter)
     vim.keymap.set("n", keymap, function()
-        telescope._search_session(session_dir, delimiter)
+        telescope._search_session(session_dir, delimiter, windows_drive_delimiter)
     end, {
         noremap = true,
         desc = "Sessions",

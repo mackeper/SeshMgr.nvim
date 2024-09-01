@@ -17,9 +17,10 @@ local commands = {}
 --
 --@param session_dir string: The directory where the session file will be saved
 --@param delimiter string: The delimiter to use in the session file name
-commands._setup_session_save = function(session_dir, delimiter)
+--@param windows_drive_delimiter string: The delimiter to use in the session file name for Windows drives
+commands._setup_session_save = function(session_dir, delimiter, windows_drive_delimiter)
     vim.api.nvim_create_user_command("SessionSave", function()
-        actions.save_session(session_dir, actions.get_session_file_path(session_dir, delimiter))
+        actions.save_session(session_dir, actions.get_session_file_path(session_dir, delimiter, windows_drive_delimiter))
     end, { nargs = 0 })
 end
 
@@ -45,9 +46,10 @@ end
 --
 -- @param session_dir string: The directory where the session file is saved
 -- @param delimiter string: The delimiter to use in the session file name
-commands._setup_session_load_current = function(session_dir, delimiter)
+-- @param windows_drive_delimiter string: The delimiter to use in the session file name for Windows drives
+commands._setup_session_load_current = function(session_dir, delimiter, windows_drive_delimiter)
     vim.api.nvim_create_user_command("SessionLoadCurrent", function()
-        actions.load_current(session_dir, delimiter)
+        actions.load_current(session_dir, delimiter, windows_drive_delimiter)
     end, { nargs = 0 })
 end
 
@@ -63,9 +65,10 @@ end
 --
 --@param session_dir string: The directory where the session file will be saved
 --@param delimiter string: The delimiter to use in the session file name
-commands._setup_session_delete_current = function(session_dir, delimiter)
+--@param windows_drive_delimiter string: The delimiter to use in the session file name for Windows drives
+commands._setup_session_delete_current = function(session_dir, delimiter, windows_drive_delimiter)
     vim.api.nvim_create_user_command("SessionDeleteCurrent", function()
-        actions.delete_session(actions.get_session_file_path(session_dir, delimiter))
+        actions.delete_session(actions.get_session_file_path(session_dir, delimiter, windows_drive_delimiter))
     end, { nargs = 0 })
 end
 

@@ -24,7 +24,10 @@ SeshMgr.config = {
     sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
 
     session_dir = vim.fn.stdpath("data") .. "/sessions",
-    session_name_delimiter = "*",
+
+    -- Both !! and $$ are allowed in a path on both Windows and Unix
+    session_name_delimiter = "!!",
+    session_windows_drive_delimiter = ";;",
 
     autosave_events = { "ExitPre" },
     autosave = true,
@@ -57,12 +60,12 @@ end
 SeshMgr._setup_commands = function()
     local commands = require("seshmgr.commands")
 
-    commands._setup_session_save(SeshMgr.config.session_dir, SeshMgr.config.session_name_delimiter)
+    commands._setup_session_save(SeshMgr.config.session_dir, SeshMgr.config.session_name_delimiter, SeshMgr.config.session_windows_drive_delimiter)
     commands._setup_session_load()
     commands._setup_session_load_last(SeshMgr.config.session_dir)
-    commands._setup_session_load_current(SeshMgr.config.session_dir, SeshMgr.config.session_name_delimiter)
+    commands._setup_session_load_current(SeshMgr.config.session_dir, SeshMgr.config.session_name_delimiter, SeshMgr.config.session_windows_drive_delimiter)
     commands._setup_session_delete()
-    commands._setup_session_delete_current(SeshMgr.config.session_dir, SeshMgr.config.session_name_delimiter)
+    commands._setup_session_delete_current(SeshMgr.config.session_dir, SeshMgr.config.session_name_delimiter, SeshMgr.config.session_windows_drive_delimiter)
     commands._setup_session_list(SeshMgr.config.session_dir)
 end
 
@@ -74,6 +77,7 @@ SeshMgr._setup_autocmds = function()
         autocmds.start_autosave(
             SeshMgr.config.session_dir,
             SeshMgr.config.session_name_delimiter,
+            SeshMgr.config.session_windows_drive_delimiter,
             SeshMgr.config.autosave_events
         )
     end
@@ -88,7 +92,8 @@ SeshMgr._setup_keymaps = function()
         telescope.setup_keymaps(
             SeshMgr.config.telescope.keymap,
             SeshMgr.config.session_dir,
-            SeshMgr.config.session_name_delimiter
+            SeshMgr.config.session_name_delimiter,
+            SeshMgr.config.session_windows_drive_delimiter
         )
     end
 end

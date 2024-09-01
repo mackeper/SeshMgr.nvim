@@ -10,13 +10,14 @@ local autocmds = {}
 ---
 ---@param session_dir string The directory where the session file will be saved
 ---@param delimiter string The delimiter to use in the session file name
+---@param windows_drive_delimiter string The delimiter to use in the session file name for Windows
 ---@param events table The events to trigger the autosave
-autocmds.start_autosave = function(session_dir, delimiter, events)
+autocmds.start_autosave = function(session_dir, delimiter, windows_drive_delimiter, events)
     vim.api.nvim_create_autocmd(events, {
         desc = "Save session on exit",
         group = vim.api.nvim_create_augroup("seshmgr.autosave", { clear = true }),
         callback = function()
-            actions.save_session(session_dir, actions.get_session_file_path(session_dir, delimiter))
+            actions.save_session(session_dir, actions.get_session_file_path(session_dir, delimiter, windows_drive_delimiter))
         end,
     })
 end

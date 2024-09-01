@@ -17,7 +17,8 @@ describe("autocmds", function()
     it("start_autosave should add autocmd", function()
         -- Arrange
         local session_dir = "/tmp"
-        local delimiter = "!"
+        local delimiter = "!!"
+        local windows_drive_delimiter = ";;"
         local events = { "ExitPre", "BufWritePost", "VimLeavePre" }
         local group_name = "seshmgr.autosave"
 
@@ -26,7 +27,7 @@ describe("autocmds", function()
         end
 
         -- Act
-        require("seshmgr.autocmds").start_autosave(session_dir, delimiter, events)
+        require("seshmgr.autocmds").start_autosave(session_dir, delimiter, windows_drive_delimiter, events)
 
         -- Assert
         for _, event in ipairs(events) do
@@ -37,11 +38,12 @@ describe("autocmds", function()
     it("stop_autosave should remove autocmd", function()
         -- Arrange
         local session_dir = "/tmp"
-        local delimiter = "!"
+        local delimiter = "!!"
+        local windows_drive_delimiter = ";;"
         local events = { "ExitPre", "BufWritePost", "VimLeavePre" }
         local group_name = "seshmgr.autosave"
 
-        require("seshmgr.autocmds").start_autosave(session_dir, delimiter, events)
+        require("seshmgr.autocmds").start_autosave(session_dir, delimiter, windows_drive_delimiter, events)
 
         for _, event in ipairs(events) do
             assert(has_autocmd(group_name, event), string.format("autocmd with event '%s' should exist", event))

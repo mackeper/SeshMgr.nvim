@@ -69,3 +69,4 @@ To generate documentation:
 
 - Run `:lua MiniDoc.generate()` in Neovim
 - Run `scripts/generate-docs.sh` in the terminal
+  - Needs `mini.doc` installed in `~/.local/share/nvim/site/pack/vendor/start`

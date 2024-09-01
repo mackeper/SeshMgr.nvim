@@ -201,13 +201,14 @@ Usage ~
 
 ------------------------------------------------------------------------------
                                                      *telescope.setup_keymaps()*
-        `telescope.setup_keymaps`({keymap}, {session_dir}, {delimiter})
+`telescope.setup_keymaps`({keymap}, {session_dir}, {delimiter}, {windows_drive_delimiter})
 Setup the telescope keymaps
 
 Parameters ~
 {keymap} `(string)` The keymap to use
 {session_dir} `(string)` The directory where the session files are saved
 {delimiter} `(string)` The delimiter to use in the session file name
+{windows_drive_delimiter} `(string)` The delimiter to use for Windows drives
 
 
  vim:tw=78:ts=8:noet:ft=help:norl:

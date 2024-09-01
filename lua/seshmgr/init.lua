@@ -92,7 +92,8 @@ SeshMgr._setup_keymaps = function()
         telescope.setup_keymaps(
             SeshMgr.config.telescope.keymap,
             SeshMgr.config.session_dir,
-            SeshMgr.config.session_name_delimiter
+            SeshMgr.config.session_name_delimiter,
+            SeshMgr.config.session_windows_drive_delimiter
         )
     end
 end

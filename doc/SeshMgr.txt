@@ -15,14 +15,13 @@ lists session with timestamps and in order of last used.
 
 `require("seshmgr").setup({})` (replace `{}` with your `configuration`)
 
-
 ------------------------------------------------------------------------------
                                                                 *SeshMgr.config*
                                 `SeshMgr.config`
 Plugin configuration
 
 Default values:
->
+>lua
   SeshMgr.config = {
       sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
 
@@ -42,7 +41,6 @@ Default values:
   }
 
 <
-
 ------------------------------------------------------------------------------
                                                                *SeshMgr.setup()*
                             `SeshMgr.setup`({opts})
